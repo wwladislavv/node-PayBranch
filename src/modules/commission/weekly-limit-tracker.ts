@@ -1,23 +1,36 @@
-export default class WeeklyLimitTracker {
-    public limit: number;
-    private usedAmounts: Record<number, number> = {};
+const createWeeklyLimitTracker = (limit = 1000) => {
+    let usedAmounts: Record<number, number> = {};
 
-    constructor(limit: number = 1000) {
-        this.limit = limit;
-    }
+    const addAmount = (userId: number, amount: number) => {
+        usedAmounts = {
+            ...usedAmounts,
+            [userId]: (usedAmounts[userId] || 0) + amount,
+        };
+    };
 
-    addAmount(userId: number, amount: number) {
-        if (!this.usedAmounts[userId]) {
-            this.usedAmounts[userId] = 0;
-        }
-        this.usedAmounts[userId] += amount;
-    }
+    const hasExceededLimit = (userId: number) =>
+        (usedAmounts[userId] || 0) > limit;
 
-    hasExceededLimit(userId: number) {
-        return this.usedAmounts[userId] > this.limit;
-    }
+    const willExceedLimit = (userId: number, amount: number) =>
+        (usedAmounts[userId] || 0) + amount > limit;
 
-    reset(userId: number) {
-        this.usedAmounts[userId] = 0;
-    }
-}
+    const usedAmount = (userId: number) => usedAmounts[userId] || 0;
+
+    const reset = (userId: number) => {
+        usedAmounts = {
+            ...usedAmounts,
+            [userId]: 0,
+        };
+    };
+
+    return {
+        limit,
+        addAmount,
+        hasExceededLimit,
+        willExceedLimit,
+        usedAmount,
+        reset,
+    };
+};
+
+export default createWeeklyLimitTracker;

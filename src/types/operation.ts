@@ -1,15 +1,18 @@
 import type { RawDateString } from './date';
 
-export const OPERATION_CASH_IN = 'cash_in';
-export const OPERATION_CASH_OUT = 'cash_out';
-export const USER_NATURAL = 'natural';
-export const USER_JURIDICAL = 'juridical';
+export enum Operations {
+    cash_in = 'cash_in',
+    cash_out = 'cash_out',
+}
 
-export type OperationType =
-    | typeof OPERATION_CASH_IN
-    | typeof OPERATION_CASH_OUT;
+export enum UserTypes {
+    natural = 'natural',
+    juridical = 'juridical',
+}
 
-export type UserType = typeof USER_NATURAL | typeof USER_JURIDICAL;
+export type OperationType = Operations.cash_in | Operations.cash_out;
+
+export type UserType = UserTypes.natural | UserTypes.juridical;
 
 export type OperationItem = {
     date: RawDateString;

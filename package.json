@@ -9,8 +9,8 @@
         "build": "rimraf ./build && tsc",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
-        "lint:check": "eslint .",
-        "lint:fix": "eslint --fix .",
+        "lint:check": "eslint ./src --ext .ts",
+        "lint:fix": "eslint --fix ./src --ext .ts",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
@@ -18,8 +18,11 @@
     "devDependencies": {
         "@types/minimist": "^1.2.5",
         "@types/node": "^20.11.5",
+        "@typescript-eslint/eslint-plugin": "^6.19.1",
+        "@typescript-eslint/parser": "^6.19.1",
         "eslint": "^8.56.0",
         "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-airbnb-typescript": "^17.1.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-prettier": "^5.1.3",

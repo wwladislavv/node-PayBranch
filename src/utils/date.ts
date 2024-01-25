@@ -8,8 +8,8 @@ export const sortByDate = (a: OperationItem, b: OperationItem) => {
     const { date: aDate } = a;
     const { date: bDate } = b;
     // Convert the date strings to Date objects
-    let dateA = new Date(aDate);
-    let dateB = new Date(bDate);
+    const dateA = new Date(aDate);
+    const dateB = new Date(bDate);
 
     return +dateA - +dateB;
 };
