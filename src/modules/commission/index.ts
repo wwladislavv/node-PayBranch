@@ -1,4 +1,5 @@
-import { Operations, UserTypes, OperationItem } from '../../types/operation';
+import { Operations, UserTypes } from '../../types/operation';
+import type { OperationItem } from '../../types/operation';
 import { isStartOfWeek, sortByDate } from '../../utils/date';
 
 import createWeeklyLimitTracker from './weekly-limit-tracker';
@@ -11,7 +12,7 @@ type WeeklyLimitTrackerMap = Record<
 
 type CalculateMethod = 'common' | 'min' | 'max' | 'week_limit';
 
-const percentOfAmount = (amount: number, percent: number): number =>
+export const percentOfAmount = (amount: number, percent: number): number =>
     (amount * percent) / 100;
 
 const createWeeklyLimitTrackerMap = (
@@ -39,7 +40,7 @@ const createWeeklyLimitTrackerMap = (
     },
 });
 
-const calculateCommon = (
+export const calculateCommon = (
     config: Config['commission'],
     operation: OperationItem
 ): number => {

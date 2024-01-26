@@ -10,15 +10,11 @@ export enum UserTypes {
     juridical = 'juridical',
 }
 
-export type OperationType = Operations.cash_in | Operations.cash_out;
-
-export type UserType = UserTypes.natural | UserTypes.juridical;
-
 export type OperationItem = {
     date: RawDateString;
     user_id: number;
-    user_type: UserType;
-    type: OperationType;
+    user_type: `${UserTypes}`;
+    type: `${Operations}`;
     operation: {
         amount: number;
         currency: 'EUR';

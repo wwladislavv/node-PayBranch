@@ -9,7 +9,7 @@ const createWeeklyLimitTracker = (limit = 1000) => {
     };
 
     const hasExceededLimit = (userId: number) =>
-        (usedAmounts[userId] || 0) > limit;
+        (usedAmounts[userId] || 0) >= limit;
 
     const willExceedLimit = (userId: number, amount: number) =>
         (usedAmounts[userId] || 0) + amount > limit;
