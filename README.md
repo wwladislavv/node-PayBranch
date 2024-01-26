@@ -14,6 +14,12 @@ npm install
 npm run start
 ```
 
+### Run tests
+
+```bash
+npm run test
+```
+
 ### Start development
 
 ```bash
